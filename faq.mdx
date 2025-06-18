@@ -1,0 +1,100 @@
+---
+title: "FAQ"
+description: "Frequently asked questions about Teta"
+---
+
+## Teta App
+
+<AccordionGroup>
+  <Accordion title="What's Teta">
+    Teta is an AI-powered app builder that turns a plain-language prompt into a full Flutter codebase—UI, business logic, tests, and build pipeline included. You can iterate visually in the browser, then export or deploy the very same production-grade code.
+  </Accordion>
+  <Accordion title="Who is Teta for?">
+    | **Profile**               | **Why they use Teta**                                                              |
+    | :------------------------ | :--------------------------------------------------------------------------------- |
+    | Founders & start-ups      | Ship an MVP in days, validate early, stay in control of the source.                |
+    | Designers / Product teams | Prototype native apps without waiting for dev capacity.                            |
+    | Flutter developers        | Automate boilerplate, focus on advanced logic, keep clean architecture.            |
+    | Agencies & SI             | Parallel-run multiple client projects, cut delivery time, white-label deployments. |
+  </Accordion>
+  <Accordion title="How does the build flow work?">
+    1. Describe – Write a prompt or paste wireframes / user stories.
+    2. Decompose – Teta’s agent splits the spec into tasks (screens, state, data, tests).
+    3. Generate – AI engineer agent creates code following best practises.
+    4. Inspect & tweak – Live preview, visual editors, or ask the Teta agent to refactor code.
+    5. Ship – One-click web deploy or push changes to GitHub
+  </Accordion>
+  <Accordion title="4. What platforms does the generated code target?">
+    - Websites (SvelteKit)
+    - Web Apps (SvelteKit or Flutter)
+    - Android & iOS (Flutter)
+    - macOS, Windows, and Linux (Flutter)
+  </Accordion>
+  <Accordion title="New Accordion">
+    Absolutely. Every project is a real Flutter repo. You can:
+
+    - Export locally or push to GitHub (see more).
+    - Keep two-way sync—changes in the IDE can be pushed; merged changes flow back into Teta.
+    - Add or swap any [npm](https://www.npmjs.com/) or [pub.dev](http://pub.dev) package, write platform channels, or integrate existing modules.
+  </Accordion>
+  <Accordion title="Is the generated code production quality?">
+    Yes. Teta AI engineer agent uses lint, enforce layered separation, and auto-generate unit \+ widget tests. You can high coverage with one command, then integrate into any CI/CD system.
+  </Accordion>
+  <Accordion title="How does deployment work?">
+    | **Target**          | **How**                                                   |
+    | :------------------ | :-------------------------------------------------------- |
+    | Instant web preview | Free staging domain on \*.teta.sh.                        |
+    | Custom domains      | Add DNS records following instructions in the dashboard.  |
+    | Mobile stores       | Download the project and submit via Xcode/Android Studio. |
+    | Self-hosting        | Export the repo and deploy on your own infra. No lock-in. |
+  </Accordion>
+  <Accordion title="How is data handled? Does Teta integrate with Supabase?">
+    Yes—natively.
+
+    - Connect an existing Supabase project Teta.
+    - The agent reads your tables, RLS policies.
+    - Out-of-the-box auth (email/OAuth/SSO) and real-time streams.
+
+    Need Firebase, SQL, local or REST? Ask Teta or plug in a custom provider.
+  </Accordion>
+  <Accordion title="How does the GitHub integration work?">
+    - Import an existing Svelte or Flutter repo to jump-start a visual refactor.
+    - Export any Teta project as a brand-new private/public repo.
+    - Sync: bi-directional; You can push for every visual change, and Teta merges any changes you made to the repository.
+  </Accordion>
+  <Accordion title="How much does Teta cost?">
+    - Free tier – unlimited visual drafts, max 5 daily messages.
+    - Teta S – €25 / mo per editor: custom domain, unlimited Supabase connections, GitHub sync. Unlimited daily messages. Limited monthly requests.
+    - Teta X – €99 / mo per editor: Everything in Teta S. 10x requests. \
+      Enterprise quotes available; contact sales.
+  </Accordion>
+  <Accordion title="Who owns the code?">
+    You do. Teta is closed-source, but every line it generates for your project is yours at export.
+  </Accordion>
+  <Accordion title="Which languages does the AI understand?">
+    Prompts work in any language; docs and UI currently ship in English.
+  </Accordion>
+  <Accordion title="Can I add third-party plugins?">
+    Yes. Tell Teta:
+
+    “Add stripe_checkout for in-app payments and set up webhooks.”
+
+    The agent updates pubspec.yaml, wiring, and environment configs. Native iOS/Android setup scripts are generated automatically.
+  </Accordion>
+  <Accordion title="How is Teta different from other no-code / AI builders?">
+    | **What we do**                                                                                                                                                                                                                | **Why it matters**                                                                                                        |
+    | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+    | Cloud-native AI engineer agent â€“ Teta behaves like a senior dev that never sleeps: it reads and rewrites files, runs Bash commands, lints, executes tests, even triggers full builds to catch runtime errors before you do. | You're not getting a static code generator. You're getting an autonomous teammate that iterates until the build is green. |
+    | Dual-stack output (Flutter and SvelteKit)                                                                                                                                                                                     | Pick the front-end technology that fits your product or team skills; switch later without rewriting from scratch.         |
+    | Supabase & GitHub native, not bolted on â€“ two-way schema sync, RLS awareness, branch PRs, and CI status checks are first-class citizens.                                                                                    | Data model and source control stay where developers expect themâ€”no babysitting exports or manual merges.                |
+    | Real, ownership-free code â€“ full Flutter/SvelteKit repos under MIT license; no proprietary JSON or binary blobs.                                                                                                            | Total portability, legal clarity, zero vendor lock-in.                                                                    |
+    | Developer-first ergonomics â€“ hot-reload, keyboard shortcuts, CLI & headless API, VS Code extension.                                                                                                                         | Builders target citizen devs; Teta supercharges actual devs and technical founders.                                       |
+    | Multi-agent reasoning â€“ specialized sub-agents write tests, craft API stubs, generate copy, and suggest performance fixes.                                                                                                  | Your project arrives with test coverage, documentation, and UX polish baked in.                                           |
+    | Workflow transparency â€“ every AI action is logged as a pull request or terminal output you can audit.                                                                                                                       | Compliance & audit trails out-of-the-box, essential for enterprise and regulated sectors.                                 |
+  </Accordion>
+  <Accordion title="What support channels are available?">
+    - Public Discord (community, showcase, tips).
+    - Email support (Pro and above).
+    - Priority Slack & solution-architect hours (Scale/Enterprise).
+  </Accordion>
+</AccordionGroup>

@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Teta docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#3285FF",
+    "light": "#3285FF",
+    "dark": "#3285FF"
   },
   "favicon": "/favicon.svg",
   "navigation": {
