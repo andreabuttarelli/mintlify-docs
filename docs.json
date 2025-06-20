@@ -17,18 +17,15 @@
             "group": "Get Started",
             "pages": [
               "index",
-              "quickstart"
+              "quickstart",
+              "messaging_limits",
+              "faq"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Editor",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "editor/agent_mode"
             ]
           }
         ]
