@@ -1,0 +1,63 @@
+---
+title: "Ignore Files"
+description: "Control which files Teta AI can access using .tetaignore"
+---
+
+## **Overview**
+
+Teta reads and indexes your project’s codebase to power its features.  The .tetaignore system uses gitignore-style patterns to exclude files from processing. It supports basic glob patterns and directory matching.
+
+## Supported Patterns
+
+### Basic Patterns
+
+```markdown
+- **filename.txt** - Matches any file named filename.txt anywhere in the project
+- ***.log** - Matches all files with .log extension
+- **temp?.txt** - Matches temp1.txt, tempA.txt, etc. (? matches single character)
+```
+
+### Path-based Patterns
+
+```markdown
+- **/config.json** - Matches config.json only in the root directory
+- **build/** - Matches any directory named build (trailing slash indicates directory)
+- **src/*.dart** - Matches all .dart files directly in src directory
+```
+
+### Wildcards
+
+```markdown
+- **"*"** - Matches any number of characters (except path separator)
+- **?** - Matches exactly one character
+```
+
+### Current Limitations
+
+```markdown
+- **Negation patterns (!pattern)** are recognized but not implemented
+- **Double asterisk (**)** patterns are not supported
+- **Complex negation** logic is not handled
+- **Character classes ([abc])** are not supported
+```
+
+### How It Works
+
+```
+1. File paths are converted to relative paths from the base directory
+2. Each pattern is tested against the relative path
+3. Patterns are converted to regex for matching:
+  - . becomes \. (literal dot)
+  - * becomes .* (any characters)
+  - ? becomes . (single character)
+4. Directory patterns (ending with /) use prefix matching
+5. Root patterns (starting with /) match from project root only
+
+Examples
+
+# .tetaignore file
+*.log          # Ignores all .log files
+build/         # Ignores build directory
+/config.json   # Ignores config.json in root only
+temp?.txt      # Ignores temp1.txt, tempA.txt, etc.
+```
