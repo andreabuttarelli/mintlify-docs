@@ -27,6 +27,12 @@
             "pages": [
               "editor/agent_mode"
             ]
+          },
+          {
+            "group": "GitHub",
+            "pages": [
+              "github/ignore"
+            ]
           }
         ]
       }
