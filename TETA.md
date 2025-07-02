@@ -1,0 +1,1 @@
+Created github/github_integration.mdx in English and updated docs.json to include it as the first link under the "GitHub" section.

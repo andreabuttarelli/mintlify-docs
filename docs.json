@@ -32,6 +32,7 @@
           {
             "group": "GitHub",
             "pages": [
+              "github/github_integration",
               "github/ignore"
             ]
           }
