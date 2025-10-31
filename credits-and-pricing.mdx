@@ -1,0 +1,278 @@
+---
+title: "Credits & Pricing"
+description: "Understand how Teta's pricing system works."
+---
+
+## How Tokens Work
+
+Teta uses a **token-based system** where AI interactions consume tokens. Tokens represent the amount of text processed by the AI (both input and output).
+
+### Token Consumption
+
+Tokens are consumed when:
+- You send a message to the AI
+- The AI reads and understands your code
+- The AI generates or modifies code
+- The AI performs research or analysis
+- The AI uses external tools (MCP servers)
+
+Tokens are **not** consumed when:
+- Browsing the UI
+- Viewing preview
+- Using hot reload/restart
+- Reading documentation
+- Configuring settings
+
+### What Affects Token Usage?
+
+The number of tokens used depends on:
+- **Request length**: Longer prompts use more tokens
+- **Response length**: More complex code generation uses more tokens
+- **Context**: The AI needs to read related code files
+- **Iterations**: Multiple back-and-forth messages add up
+- **MCP usage**: Accessing external tools may increase token use
+- **Agents**: Custom agents may also increase the tokens use
+
+## Pricing Plans
+
+Teta offers three main pricing tiers, each with increasing token allowances.
+
+### Available Plans
+
+| Plan | Token Allowance | Price |
+|------|-----------------|-------|
+| **Starter (Free)** | Base allowance | Free |
+| **Pro** | 5x Starter | Paid plan |
+| **Max** | 4x Pro (20x Starter) | Premium plan |
+
+> **Note**: Check [teta.so/#pricing](https://teta.so/#pricing) for current prices and exact allowances.
+
+### Plan Comparison
+
+**Starter (Free)**
+- Base token allowance
+- For individuals only to get started
+- Full access to Teta platform
+- Flutter development environment
+- GitHub integration
+- App preview
+- Custom MCP servers
+- Custom AI agents
+- Deploy to *.teta.sh
+
+**Pro**
+- 5x more tokens than Starter
+- For both individuals and teams (shared between unlimited users)
+- Everything in Starter, plus:
+- Priority processing
+- Custom domains
+- Priority support
+
+**Max**
+- 4x more tokens than Pro (20x Starter)
+- For both individuals and teams (shared between unlimited users)
+- Everything in Pro, plus:
+- Maximum token allowance
+- Dedicated support
+- Custom cloud environment (on request)
+
+## Understanding Token Usage
+
+### How to Monitor Your Usage
+
+Teta provides detailed usage statistics:
+
+1. Go to **Settings** > **Pricing/Subscription**
+2. View complete usage stats
+3. Track token consumption over the billing period
+
+## Optimizing Token Usage
+
+### 1. Be Specific and Concise
+
+Clear, focused requests use fewer tokens:
+
+❌ **Avoid**:
+```
+"Can you please take a look at my app and make it better?
+I think there might be some issues with the design and maybe
+the code could be improved..."
+```
+
+✅ **Better**:
+```
+"Change the login button color to #1E88E5"
+```
+
+### 2. Batch Related Changes
+
+Combine multiple small changes into one request:
+
+❌ **Uses more tokens** (3 separate messages):
+```
+1. "Add a title"
+2. "Add a subtitle"
+3. "Add a description"
+```
+
+✅ **Uses fewer tokens** (1 message):
+```
+"Add a page header with title, subtitle, and description"
+```
+
+### 3. Use Preview Controls First
+
+Before asking the AI:
+- Try Hot Reload for UI changes
+- Check console for error messages
+- Test different device modes
+
+Many issues can be solved without AI assistance!
+
+### 4. Learn from AI Responses
+
+The AI explains its changes. Use this to handle similar tasks yourself next time:
+
+```
+AI: "I updated the theme file at lib/theme/colors.dart"
+
+Next time: Edit that file directly instead of asking!
+```
+
+### 5. Use AI Agents
+
+Create AI agents for repetitive patterns:
+- Define coding standards once
+- Agent applies them automatically
+- Reduces need for detailed instructions each time
+
+Learn more: [AI Agents Guide](./ai-agents.md)
+
+## Team Collaboration
+
+### Team Features (Pro & Max Plan)
+
+The Pro and Max plans include advanced team collaboration:
+- **Shared workspaces**: Work together on projects
+- **Team agents**: Share AI configurations
+- **Usage analytics**: Monitor team consumption
+- **Priority support**: Dedicated assistance
+
+## Upgrading Your Plan
+
+### When to Upgrade
+
+Consider upgrading when:
+- Approaching token limits regularly
+- Need more capacity for larger projects
+- Working with a team
+- Require priority support
+- Want advanced features
+
+### How to Upgrade
+
+1. Go to **Settings** > **Billing**
+2. Click **"Upgrade Plan"** on the desired plan. It will open a new tab
+4. Enter payment information
+5. Confirm upgrade
+
+**Effect**: Immediate access to new limits!
+
+### Downgrading
+
+To downgrade:
+1. Go to **Settings** > **Billing**
+2. Click **"Manage"**. It will open a new tab
+3. Select lower tier
+4. Confirm downgrade
+
+**Effect**: Takes effect next billing cycle
+
+## Payment Methods
+
+Accepted payment methods:
+- 💳 Credit/Debit Cards (Visa, Mastercard)
+
+## Billing Cycle
+
+### Monthly Billing
+
+- Charged on the same date each month
+- Credits reset on billing date
+- Prorated for plan changes
+
+## Refund Policy
+
+### 14-Day Money Back Guarantee
+
+If you're not satisfied:
+- Full refund within 14 days
+- No questions asked
+- Keep work completed
+- Contact support@teta.so
+
+### Fair Usage Policy
+
+Teta reserves the right to:
+- Monitor for abuse
+- Limit excessive usage
+- Suspend accounts violating terms
+
+Examples of abuse:
+- Reselling access
+- Automated bot usage
+- Circumventing limits
+- Making harmful requests
+- Creating illegal content
+
+## FAQs
+
+### What happens if I run out of credits?
+
+You can:
+1. Wait until daily/monthly reset
+2. Upgrade your plan
+3. Continue using preview (doesn't require credits)
+4. Work on code outside of Teta
+
+### Do unused credits roll over?
+
+No, credits reset each period:
+- Daily credits reset every day
+- Monthly credits reset each billing cycle
+
+### Can I purchase additional credits?
+
+You can upgrade to a higher plan for more credits.
+
+### How do refunds work with usage?
+
+- Refunds are accepted within 14 days if no AI usage occurred.
+
+### What about free trials?
+
+- Free tier is always available (no trial needed)
+
+## Getting Help
+
+### Support Channels
+
+- 📧 **Email**: support@teta.so
+- 💬 **Discord**: [discord.gg/teta](https://discord.gg/teta)
+- 📖 **Docs**: [docs.teta.so](https://docs.teta.so)
+- 🐛 **GitHub**: [github.com/teta-so/teta/issues](https://github.com/teta-so/teta/issues)
+
+### Billing Support
+
+For billing questions:
+- 📧 **Email**: support@teta.so
+
+## Related Documentation
+
+- [Getting Started](./getting-started.md) - Platform basics
+- [AI Agents](./ai-agents.md) - Optimize usage with agents
+- [Preview Controls](./preview-controls.md) - Reduce AI dependency
+
+---
+
+**Questions? Contact support@teta.so**

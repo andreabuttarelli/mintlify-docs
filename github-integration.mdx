@@ -1,0 +1,280 @@
+# GitHub Integration Guide
+
+Teta seamlessly integrates with GitHub to provide version control, collaboration, and deployment capabilities for your projects.
+
+## Why GitHub Integration?
+
+GitHub integration is **required** for all Teta projects. This ensures:
+
+- ✅ **Version Control**: Track all changes to your code
+- ✅ **Team Collaboration**: Work together with your team
+- ✅ **Branch Protection**: Never work directly on main/master
+- ✅ **Backup**: Your code is always safe in your repository, never hosted by our side
+- ✅ **Deployment**: Easy publishing and continuous deployment
+
+## Getting Started
+
+### Prerequisites
+
+1. A GitHub account (create one at [github.com](https://github.com))
+2. A repository for your project
+3. Admin access to the repository
+
+### Initial Setup
+
+#### Step 1: Install Teta GitHub App
+
+1. Go to **Settings** > **GitHub** in your Teta project
+2. Click **"Connect GitHub"**
+3. You'll be redirected to GitHub
+4. Click **"Install"** on the Teta GitHub App
+5. Select which repositories to give access to:
+   - **All repositories** (easiest)
+   - **Only select repositories** (more control)
+
+#### Step 2: Link Repository
+
+1. Return to Teta and start a new session
+2. Select your repository from the dropdown
+3. Choose the default branch (usually `main` or `master`)
+4. Click **"Connect"**
+
+#### Step 3: Initialization
+
+Teta will automatically:
+
+1. Clone your repository
+2. Create a working branch (`teta/{feature}-{app}`)
+3. Set up the development environment
+4. Initialize the workspace
+
+> **Important**: Teta never works directly on your default branch. All changes happen on dedicated working branches.
+
+## How It Works
+
+### Branch Strategy
+
+Teta uses a protective branch strategy:
+
+```
+main (or master)           ← Your production code (protected)
+  └─ teta/app-abc123       ← Teta's working branch
+```
+
+**What happens:**
+
+1. Teta clones your default branch
+2. Creates a new branch: `teta/app-[your-app-id]`
+3. All AI changes are committed to this working branch
+4. You control when to merge back to main
+
+### Workspace Lifecycle
+
+#### On First Connect
+
+```
+1. Clone repository from default branch
+2. Create working branch (teta/app-*)
+3. Push working branch to GitHub
+4. Set up development environment
+6. Configure AI agents and MCPs
+7. Ready to code!
+```
+
+## Working with Git
+
+### Committing Changes
+
+The AI will always commits when it edits the code.
+
+Everytime the AI will:
+1. Review all changes with `git status` and `git diff`
+2. Stage relevant files
+3. Create a descriptive commit message
+4. Commit to your working branch
+
+### Pushing to GitHub
+
+To push your changes:
+
+```
+You: "Push my changes to GitHub"
+```
+
+The AI will:
+1. Verify there are commits to push
+2. Push to your working branch
+3. Confirm the push was successful
+
+### Creating Pull Requests
+
+You can create the PR by clicking the button 'Open PR' inside the chat with the AI.
+This will redirect you to the review changes page on GitHub, where you can open the PR.
+
+Or you can ask Teta to create a PR:
+
+```
+You: "Create a pull request for these changes"
+```
+
+The AI will:
+1. Review all commits on your branch
+2. Generate a comprehensive PR description
+3. Create the PR using GitHub CLI (`gh`)
+4. Return the PR URL
+
+### Review Before Merging
+
+Always review your working branch before merging to main:
+
+1. Check the diff on GitHub
+2. Test the changes thoroughly
+3. Get team review if applicable
+4. Merge via pull request
+
+## Advanced Features
+
+### Viewing History
+
+To see commit history:
+
+```
+You: "Show me the last 10 commits"
+```
+
+The AI will display:
+- Commit hashes
+- Messages
+- Authors
+- Timestamps
+
+### Rolling Back Changes
+
+To undo commits:
+
+```
+You: "Revert the last commit"
+```
+
+> **Warning**: Be careful with destructive operations. Always ensure work is backed up.
+
+## Troubleshooting
+
+### Connection Issues
+
+**Problem**: Can't connect to GitHub
+
+**Solutions**:
+1. Check GitHub App is installed
+2. Verify repository access
+3. Ensure you have admin rights
+4. Try reinstalling the GitHub App
+
+### Push Failed
+
+**Problem**: Cannot push to GitHub
+
+**Solutions**:
+1. Check internet connection
+2. Verify branch name is correct
+3. Ensure you have write access
+4. Pull latest changes first
+
+### Merge Conflicts
+
+**Problem**: Cannot merge branches
+
+**Solutions**:
+1. Review conflicting files
+2. Use `git status` to see conflicts
+3. Edit files to resolve conflicts
+4. Commit the resolution
+5. Ask AI for help if needed
+
+### Lost Connection
+
+**Problem**: GitHub connection lost
+
+**Solutions**:
+1. Go to Settings > GitHub
+2. Click "Reconnect"
+3. Reauthorize the app
+4. Verify repository access
+
+## Security Best Practices
+
+### Protect Sensitive Data
+
+Never commit:
+- API keys and secrets
+- Database passwords
+- Private keys
+- Environment variables with sensitive data
+
+### Use Environment Variables
+
+For sensitive configuration:
+
+1. Add to **Settings** > **Secrets**
+2. Reference in code as environment variables
+3. Never hardcode in source files
+
+### Review PRs Carefully
+
+Before merging:
+- Check for accidentally committed secrets
+- Review all file changes
+- Verify tests pass
+- Check for security vulnerabilities
+
+## GitHub CLI Integration
+
+Teta uses GitHub CLI (`gh`) for advanced features:
+
+### Available Commands
+
+```bash
+# View pull requests
+gh pr list
+
+# Check PR status
+gh pr view 123
+
+# View issues
+gh issue list
+
+# Check CI/CD status
+gh run list
+```
+
+The AI can run these commands for you:
+
+```
+You: "Show me all open pull requests"
+You: "What's the status of PR #42?"
+You: "List the latest CI runs"
+```
+
+### From Other Platforms
+
+If migrating from Lovable, FlutterFlow, Claude Code Web:
+
+1. Export your code
+2. Create a GitHub repository
+3. Push code to GitHub
+4. Connect to Teta
+5. You're done!
+
+## Conclusion
+
+GitHub integration is central to the Teta development experience. It ensures your code is safe, versioned, and ready for collaboration and deployment.
+
+## Related Documentation
+
+- [Getting Started](./getting-started.md) - Platform basics
+- [AI Agents](./ai-agents.md) - Custom AI workflows
+- [Preview Controls](./preview-controls.md) - Development workflow
+
+---
+
+**Need help? Contact support@teta.so**

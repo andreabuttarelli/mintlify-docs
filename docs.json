@@ -17,22 +17,15 @@
             "group": "Get Started",
             "pages": [
               "index",
-              "models",
-              "messaging_limits",
-              "faq"
+              "github-integration",
+              "ai-agents",
+              "mcp-servers"
             ]
           },
           {
-            "group": "Editor",
+            "group": "Billing",
             "pages": [
-              "editor/agent_mode"
-            ]
-          },
-          {
-            "group": "GitHub",
-            "pages": [
-              "github/github_integration",
-              "github/ignore"
+              "credits-and-pricing"
             ]
           }
         ]

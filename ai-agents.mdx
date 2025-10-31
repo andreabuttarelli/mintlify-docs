@@ -1,0 +1,431 @@
+---
+title: "Agents"
+description: "Learn how to create and use customizable AI agents to enforce coding standards, best practices, and specific workflows in Teta."
+---
+
+## What are AI Agents?
+
+AI Agents are specialized AI assistants with custom instructions (prompts) that help you:
+
+- Enforce coding standards and best practices
+- Follow specific architectural patterns
+- Generate code in a particular style
+- Handle domain-specific tasks
+- Automate repetitive workflows
+- They have their own context window
+
+## Creating AI Agents
+
+### Personal Agents
+
+Personal agents are available only to you across all your projects.
+
+**To create a personal agent:**
+
+1. **Main Sidebar** > **Agents**
+2. Click **"New"**
+3. Fill in the agent details:
+   - **Name**: A descriptive name (e.g., "flutter-best-practices")
+   - **Description**: What this agent does
+   - **Prompt**: Detailed instructions for the AI
+
+4. Click **"Save"**
+
+### Team Agents
+
+Team agents are shared across all members of your team and team projects.
+
+**To create a team agent:**
+
+1. Navigate to your **Team Settings**
+2. Go to **Agents** section
+3. Click **"New"**
+4. Configure the agent (same fields as personal agents)
+5. Click **"Save"**
+
+> **Note**: Team agents take precedence over personal agents in team projects.
+
+## Agent Configuration
+
+### Writing Effective Prompts
+
+A good agent prompt should:
+
+1. **Be Specific**: Clearly define the agent's purpose
+2. **Include Examples**: Show desired output format
+3. **Set Constraints**: Define what to do and what to avoid
+4. **Establish Context**: Explain the project type and requirements
+
+#### Example Agent Prompts
+
+**Flutter Clean Architecture Agent:**
+
+```markdown
+You are a Flutter development expert specializing in Clean Architecture.
+
+When generating code:
+- Always follow Clean Architecture principles (Domain, Data, Presentation layers)
+- Use BLoC pattern for state management
+- Create separate files for models, repositories, and use cases
+- Include proper error handling with Either types
+- Add comprehensive documentation
+- Follow Flutter naming conventions
+- Write testable code
+
+Directory structure:
+- lib/features/[feature_name]/
+  - domain/ (entities, repositories, use cases)
+  - data/ (models, repositories, data sources)
+  - presentation/ (blocs, pages, widgets)
+
+Example:
+When asked to create a login feature, generate:
+1. Domain entities and repository interfaces
+2. Data models and repository implementations
+3. Use cases (LoginUseCase)
+4. BLoC for presentation logic
+5. UI pages and widgets
+```
+
+**API Integration Agent:**
+
+```markdown
+You are an API integration specialist.
+
+Guidelines:
+- Always handle errors gracefully
+- Use try-catch blocks for network calls
+- Implement retry logic for failed requests
+- Log all API calls for debugging
+- Use environment variables for API URLs
+- Parse responses into typed models
+- Add timeout configurations
+- Include loading states
+
+Response structure:
+{
+  "success": boolean,
+  "data": any,
+  "error": string | null
+}
+
+Always validate responses before using data.
+```
+
+**Code Review Agent:**
+
+```markdown
+You are a code reviewer focusing on:
+
+1. Security: Check for vulnerabilities and exposed secrets
+2. Performance: Identify bottlenecks and optimization opportunities
+3. Best Practices: Ensure code follows language conventions
+4. Maintainability: Look for code smells and suggest refactoring
+5. Testing: Verify adequate test coverage
+
+When reviewing:
+- Explain WHY something is an issue
+- Suggest specific improvements
+- Provide code examples
+- Prioritize issues (critical, important, minor)
+- Be constructive and helpful
+```
+
+## Using Agents in Your Workspace
+
+### Automatic Agent Loading
+
+When you create a new sandbox, Teta automatically:
+
+1. Fetches your personal or team agents
+2. Creates YAML configuration files in the file system
+3. Makes agents available to the AI
+
+### Agent File Structure
+
+Agents are stored as YAML files:
+
+```yaml
+---
+name: flutter-best-practices
+description: Enforces Flutter coding standards and best practices
+---
+
+[Your agent prompt here]
+```
+
+## Agent Best Practices
+
+### 1. Keep Agents Focused
+
+Each agent should have a single, clear purpose:
+
+- ✅ "Database Migration Generator"
+- ❌ "Do Everything Agent"
+
+### 2. Use Multiple Agents
+
+Create specialized agents for different tasks:
+
+- **Architecture Agent**: Enforces project structure
+- **Testing Agent**: Generates tests
+- **Documentation Agent**: Creates comprehensive docs
+- **Refactoring Agent**: Improves existing code
+
+### 3. Iterate and Improve
+
+Monitor how your agents perform:
+
+- Review generated code quality
+- Update prompts based on results
+- Add more specific instructions over time
+- Remove unnecessary constraints
+
+### 4. Share Knowledge
+
+For teams:
+
+- Document agent purposes
+- Share successful prompts
+- Create a library of proven agents
+- Establish team standards through agents
+
+## Common Agent Use Cases
+
+### 1. Code Style Enforcement
+
+```markdown
+Always follow these style rules:
+- Use 2 spaces for indentation
+- Maximum line length: 80 characters
+- Use single quotes for strings
+- Add trailing commas
+- Sort imports alphabetically
+```
+
+### 2. Framework-Specific Guidelines
+
+```markdown
+For Flutter components:
+- Use StatelessWidget unless state is required
+- Follow Material Design guidelines
+- Use const constructors where possible
+- Avoid using setState; prefer state management solutions
+```
+
+### 3. Documentation Generation
+
+```markdown
+For every function, generate comments:
+- Description of purposes
+- Parameter explanations
+- Return values
+- Example usage
+```
+
+### 4. Testing Standards
+
+```markdown
+For each feature, create:
+- Unit tests for business logic
+- Widget tests for UI (Flutter)
+- Integration tests for workflows
+- Mock external dependencies
+- Achieve 80%+ code coverage
+```
+
+## Advanced Features
+
+### Conditional Logic
+
+Agents can include conditional behavior:
+
+```markdown
+If the user asks to modify an existing file:
+- Read the file first
+- Understand the current structure
+- Make minimal changes
+- Preserve existing functionality
+
+If creating a new feature:
+- Generate all required files
+- Include tests
+- Update documentation
+- Add to index exports
+```
+
+### Context Awareness
+
+Agents can reference project state:
+
+```markdown
+Before making changes:
+1. Check if the file exists
+2. Review related files
+3. Understand dependencies
+4. Consider impact on existing code
+
+If working with state management:
+- Check current state solution (BLoC, Provider, Riverpod)
+- Follow existing patterns
+- Don't mix state management approaches
+```
+
+## Troubleshooting
+
+### Agent Not Working
+
+**Symptoms**: Agent instructions aren't being followed
+
+**Solutions**:
+1. Check agent YAML file in `.claude/agents/`
+2. Verify prompt is clear and specific
+3. Ensure agent name is properly formatted
+4. Try restarting the sandbox
+
+### Conflicting Agents
+
+**Symptoms**: AI gives inconsistent responses
+
+**Solutions**:
+1. Review all active agents
+2. Check for contradictory instructions
+3. Consolidate similar agents
+4. Use more specific agent names
+
+### Agent Files Not Loading
+
+**Symptoms**: Changes to agents don't appear
+
+**Solutions**:
+1. Verify Teta has your agents
+2. Check sandbox logs for errors
+3. Restart the development machine
+
+## Example: Complete Agent Setup
+
+Here's a real-world example for a Flutter e-commerce project:
+
+### 1. Project Standards Agent
+
+```yaml
+---
+name: e-commerce-standards
+description: Enforces coding standards for our e-commerce platform
+---
+
+Project: Flutter E-commerce App
+
+Technology Stack:
+- Flutter 3.x
+- BLoC for state management
+- Supabase for backend
+- GoRouter for navigation
+- Hive for local storage
+
+File Structure:
+lib/
+  core/ (constants, themes, utils)
+  features/ (feature-based modules)
+  shared/ (shared widgets, models)
+
+Coding Rules:
+1. Use meaningful variable names
+2. Extract magic numbers to constants
+3. Create reusable widgets
+4. Handle loading/error states
+5. Add analytics tracking
+6. Implement offline support
+```
+
+### 2. API Agent
+
+```yaml
+---
+name: supabase-api-handler
+description: Generates Supabase API integration code
+---
+
+For all Supabase operations:
+
+1. Repository Pattern:
+   - Create interface in domain layer
+   - Implement in data layer
+   - Use dependency injection
+
+2. Error Handling:
+   - Wrap in try-catch
+   - Return Either<Failure, Success>
+   - Log errors with context
+
+3. Data Transformation:
+   - Parse JSON to models
+   - Validate data
+   - Handle null values
+
+Example structure:
+abstract class ProductRepository {
+  Future<Either<Failure, List<Product>>> getProducts();
+}
+
+class ProductRepositoryImpl implements ProductRepository {
+  final SupabaseClient client;
+
+  @override
+  Future<Either<Failure, List<Product>>> getProducts() async {
+    try {
+      final response = await client.from('products').select();
+      final products = (response as List)
+          .map((json) => Product.fromJson(json))
+          .toList();
+      return Right(products);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+}
+```
+
+### 3. UI Agent
+
+```yaml
+---
+name: consistent-ui-components
+description: Creates UI components following design system
+---
+
+Design System:
+- Primary Color: #1E88E5
+- Font: Inter
+- Spacing: 8px base unit
+- Border Radius: 12px for cards, 8px for buttons
+
+For all widgets:
+1. Use theme colors, never hardcode
+2. Implement responsive layouts
+3. Add loading states
+4. Include error states
+5. Support dark mode
+6. Add accessibility labels
+
+Button styles:
+- Primary: Filled with primary color
+- Secondary: Outlined
+- Text: Text-only for tertiary actions
+
+Always extract reusable widgets to shared/widgets/
+```
+
+## Conclusion
+
+AI Agents are powerful tools for standardizing your development workflow and ensuring consistent, high-quality code generation. Start with a few focused agents and expand as you identify patterns in your work.
+
+## Related Documentation
+
+- [Getting Started](./getting-started.md) - Platform basics
+- [MCP Servers](./mcp-servers.md) - Extend functionality
+- [GitHub Integration](./github-integration.md) - Version control
+
+---
+
+**Need help with agents? Contact support@teta.so**

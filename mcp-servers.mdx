@@ -1,0 +1,193 @@
+---
+title: "MCP Servers"
+description: "MCP (Model Context Protocol) servers extend what the AI can do in Teta by connecting it to external tools and services."
+---
+
+## What are MCP Servers?
+
+Think of MCP servers as **plugins** that give the AI access to:
+- 🗄️ Your databases (Supabase, PostgreSQL, etc.)
+- 🔍 Web search and documentation
+- 🌐 External APIs
+- 🤖 External tools (even Figma, Blender, etc.)
+
+This allows the AI to not just write code, but also query your database, search documentation, or interact with your services.
+
+## Built-in MCP Servers
+
+Teta includes several pre-configured MCP servers:
+
+### 1. Supabase MCP Server
+
+**Purpose**: Interact with your Supabase database
+
+**Capabilities**:
+- Query database tables
+- Read schema information
+- Execute SQL queries (read-only)
+- Browse database structure
+
+**Setup**: Automatically configured when you provide `SUPABASE_ACCESS_TOKEN`
+
+### 2. Dart MCP Server
+
+**Purpose**: Flutter/Dart development assistance
+
+**Capabilities**:
+- Dart package documentation
+- API references
+- Best practices
+- Code examples
+
+**Setup**: Enabled by default for Flutter projects
+
+## Adding Custom MCP Servers
+
+You can add your own MCP servers through Teta Secrets.
+
+### How to Add
+
+1. Inside a project, go to **Settings** > **MCPs**
+2. Click **"Add MCP"**
+3. Add a name
+4. Add the json configuration, for example:
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-github"],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "$GITHUB_TOKEN"
+  }
+}
+```
+
+The json content will be saved as a secret to protect any sensitive info (API keys, tokens, etc.)
+When an MCP server is added to a project, its content cannot be viewed again.
+
+### Configuration Example
+
+**Secret Name**: `server-github`
+
+**Secret Value**:
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-github"],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "<GITHUB_TOKEN>"
+  }
+}
+```
+
+## Popular MCP Servers
+
+### PostgreSQL Server
+
+**Package**: `@modelcontextprotocol/server-postgres`
+
+**Capabilities**:
+- Query database
+- Read schema
+- Execute SQL
+
+**Configuration**:
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-postgres"],
+  "env": {
+    "POSTGRES_CONNECTION_STRING": "$DATABASE_URL"
+  }
+}
+```
+
+### Puppeteer Server
+
+**Package**: `@modelcontextprotocol/server-puppeteer`
+
+**Capabilities**:
+- Web scraping
+- Screenshot capture
+- Browser automation
+
+**Configuration**:
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+}
+```
+
+### Brave Search Server
+
+**Package**: `@modelcontextprotocol/server-brave-search`
+
+**Capabilities**:
+- Web search
+- Real-time information
+- Research assistance
+
+**Configuration**:
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+  "env": {
+    "BRAVE_API_KEY": "$BRAVE_KEY"
+  }
+}
+```
+
+## Using Multiple MCP Servers
+
+You can add as many MCP servers as you need. Each one adds different capabilities to the AI.
+Just add each as a separate secret in **Settings** > **MCPs**.
+
+## Security Best Practices
+
+### 1. Use Read-Only Access
+
+When possible, use read-only tokens:
+
+```json
+{
+  "args": [
+    "-y",
+    "@supabase/mcp-server-supabase",
+    "--read-only",
+    "--project-ref=${PROJECT_REF}"
+  ]
+}
+```
+
+### 2. Limit Scope
+
+Only grant necessary permissions:
+
+- For GitHub: Use personal access tokens with minimal scopes
+- For databases: Create read-only users
+- For APIs: Use restricted API keys
+
+## Finding More MCP Servers
+
+You can find ready-to-use MCP servers at:
+- [GitHub Model Context Protocol](https://github.com/modelcontextprotocol)
+
+Most MCP servers come with installation instructions on their GitHub/npm pages.
+
+## Conclusion
+
+MCP servers let you connect the AI to your existing tools and services, making it more powerful and context-aware.
+
+## Related Documentation
+
+- [Getting Started](./getting-started.md) - Platform basics
+- [AI Agents](./ai-agents.md) - Custom AI workflows
+- [GitHub Integration](./github-integration.md) - Version control
+
+---
+
+**Need help? Contact support@teta.so**

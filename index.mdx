@@ -1,38 +1,122 @@
 ---
-title: "Welcome"
-description: "Build real web apps fast using natural language with Teta"
+title: "Getting Started"
+description: "Delegate your coding tasks - anytime, anywhere!"
 ---
 
-Teta is an in-cloud AI engineer that empower users of any skill level to create full-stack web & mobile apps without requiring coding expertise by simply describing what they want via chat. Instead of hiring developers, users can generate web apps or websites instantly. **Turn ideas to apps faster than ever.**
+## What is Teta?
 
-### **Product Capabilities**
+Teta is an AI-powered development platform specifically optimized for **Flutter development**. Build mobile, web, and desktop applications with the power of AI while maintaining full control over your code through GitHub.
 
-The platform provides all the tools you need to create amazing websites, front-end apps as well as full-stack web and mobile apps from one browser tab - no installation required. Teta includes AI engineer agent, GitHub sync, and project sharing to give you a head start on your app creation journey.
+## Key Features
 
-| **Capability**   | **Description**                           | **Maturity Level** |
-| :--------------- | :---------------------------------------- | :----------------- |
-| Frontend / UI    | Build user interfaces & frontend          | 🟢 10/10           |
-| Persistence      | Store and retrieve data                   | 🟢 10/10           |
-| Authentication   | Handle user login and accounts            | 🟢 10/10           |
-| Backend endpoint | API key protected endpoint such as OpenAI | 🟢 10/10           |
-| Deployment       | Publish, custom domains & deploy          | 🟡 7/10            |
-| GitHub           | Import, export and sync the codebase      | 🟡 7/10            |
+### 🤖 AI Optimized for Flutter
+- **Flutter-First**: AI specifically trained and optimized for Flutter and Dart development
+- **Cloud Environment**: Development environment pre-configured with Flutter SDK and Dart tools
+- **Intelligent Assistant**: AI that understands Flutter widgets, state management, and best practices
+- **Custom AI Agents**: Create specialized agents for your specific coding standards and workflows
+
+### 🔐 Privacy & Security
+- **Your Code, Your Repository**: Teta never stores your codebase on its servers
+- **GitHub-Powered**: All code lives in your GitHub repository
+- **Secure Sandboxes**: Code is cloned into isolated, secure development environments
+- **Full Control**: You own and control all your code and data
+
+### 🔄 Safe Development Workflow
+- **Protected Main Branch**: AI never works directly on main/master branches
+- **Feature Branches**: All changes happen on dedicated feature branches
+- **Review Process**: Review all AI changes on GitHub before merging
+- **Pull Requests**: Create PRs directly from Teta for team collaboration
+- **Version Control**: Complete Git history of all changes
+
+### 🎨 Live Preview While Coding
+- **Real-Time Updates**: See your app running as the AI makes changes
+- **Hot Reload**: Instant UI updates without rebuilding (Flutter)
+- **Hot Restart**: Quick app restarts for logic changes
+- **Multiple Device Modes**: Test on phone, tablet, and desktop views
+- **Integrated Console**: Monitor logs and errors in real-time
+
+### 🔧 Extensibility & Customization
+- **MCP Servers**: Connect external tools and services (databases, APIs, etc.)
+- **Custom Integrations**: Add your own MCP servers for specific needs
+- **Built-in Tools**: Supabase, Dart documentation, and more out of the box
+- **Team Agents**: Share AI configurations across your team
 
 ## Quick Start
 
-To create your app on Teta, choose the guide that matches your needs:
+### 1. Create Your First Project
 
-<CardGroup cols={2}>
-  <Card title="Customize Style" icon="palette" href="https://mintlify.com/docs/settings/global">
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card title="Reference APIs" icon="code" href="https://mintlify.com/docs/api-playground/openapi">
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card title="Add Components" icon="screwdriver-wrench" href="https://mintlify.com/docs/content/components/accordions">
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card title="Get Inspiration" icon="stars" href="https://mintlify.com/customers">
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+1. Click on **"New Project"** from the dashboard
+2. Choose your project type: **Flutter** or **Svelte**
+3. Connect your **GitHub repository**
+4. Wait for the workspace to initialize
+
+### 2. Connect GitHub
+
+GitHub integration is required for all projects:
+
+1. Go to **Settings** > **GitHub**
+2. Install the Teta GitHub App
+3. Select the repository you want to use
+4. Grant necessary permissions
+
+> **Note**: Teta will create a dedicated working branch (`teta/app-*`) to protect your main branch.
+
+### 3. Start Building with AI
+
+Once your workspace is ready:
+
+1. **Chat with AI**: Describe what you want to build in natural language
+   ```
+   "Create a login screen with email and password fields"
+   "Add a user profile page with avatar and bio"
+   ```
+
+2. **Watch AI Code**: The AI makes changes directly in your feature branch
+   - All modifications are committed to Git
+   - Changes are isolated from your main branch
+
+3. **See Live Preview**: Your app updates in real-time as the AI codes
+   - Preview window shows the running app
+   - Hot reload applies changes instantly
+   - Test on different device sizes
+
+4. **Review & Merge**: When satisfied with the changes:
+   - Review the diff on GitHub
+   - Create a pull request
+   - Merge into your main branch
+
+### 4. Deploy Your App
+
+When you're ready to share:
+
+1. Click the **"Publish"** button in the navbar
+2. Your app will be deployed to a Teta domain (`*.teta.sh`)
+3. Share the link with anyone!
+4. (Optional) Connect your custom domain
+
+## Credits & Pricing
+
+Teta uses a credit-based system:
+
+- **Teta Starter plan (Free)**: 5 messages/day, 30 messages/month
+- **Teta Pro plan**: 5x Starter plan usage
+- **Teta Max Plan**: 4x Pro plan usage
+
+> **Tip**: The platform automatically chooses the best model for your task to optimize credit usage!
+
+## Next Steps
+
+- 📖 [Set up AI Agents](./ai-agents.md) - Create custom AI workflows
+- 🔌 [Configure MCP Servers](./mcp-servers.md) - Extend platform capabilities
+- 🎮 [Master Preview Controls](./preview-controls.md) - Learn development workflow
+- 🔐 [Understand GitHub Integration](./github-integration.md) - Version control best practices
+
+## Need Help?
+
+- 💬 Join our [Discord Community](https://discord.gg/teta)
+- 📧 Email support: support@teta.so
+- 🐛 Report issues: [GitHub Issues](https://github.com/teta-so/teta/issues)
+
+---
+
+**Happy Building! 🚀**
