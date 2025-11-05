@@ -1,0 +1,393 @@
+---
+title: 'Vision & Web Search Capabilities'
+description: 'How Teta's AI can analyze images, videos, and web pages directly from URLs'
+---
+
+## What Can the AI See?
+
+The AI can analyze:
+- **Images** (PNG, JPEG, GIF, WebP)
+- **Videos** (through URL links)
+- **Web pages** (content and structure)
+- **Screenshots**
+- **Diagrams and mockups**
+
+## How It Works
+
+There are **no dedicated buttons** or special commands. Simply paste a URL in your message and the AI will automatically:
+1. Fetch the content
+2. Analyze it (vision for images/videos, text extraction for web pages)
+3. Use that context to answer your question
+
+### For Images and Videos
+
+**Just paste the URL** in your message:
+
+```
+You: Take a look at this design mockup: https://example.com/mockup.png
+     Can you recreate this UI in Flutter?
+```
+
+The AI will:
+- Analyze the image
+- Understand the layout, colors, and components
+- Generate the corresponding Flutter code
+
+**Supported formats**:
+- Image URLs: `.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`
+- Video URLs: Direct video links
+
+### For Web Pages
+
+**Just paste the URL** of the website:
+
+```
+You: Read this documentation: https://supabase.com/docs/guides/auth
+     and help me implement authentication in my app
+```
+
+The AI will:
+- Fetch the web page content
+- Extract relevant information
+- Use it to provide accurate, up-to-date answers
+
+## Common Use Cases
+
+### 1. Design Implementation
+
+**You:**
+```
+Here's our new login screen design: https://figma.com/file/xyz
+Implement this in Flutter with proper animations
+```
+
+The AI will analyze the design and create matching code.
+
+### 2. Bug Reports with Screenshots
+
+**You:**
+```
+I'm getting this error: https://i.imgur.com/error123.png
+What's wrong?
+```
+
+The AI will read the error message and help debug.
+
+### 3. Documentation Research
+
+**You:**
+```
+Check out https://dart.dev/guides/language/effective-dart
+and refactor my code following these best practices
+```
+
+The AI will read the documentation and apply the guidelines.
+
+### 4. Code from Diagrams
+
+**You:**
+```
+Convert this database schema to Supabase tables: https://example.com/schema.png
+```
+
+The AI will analyze the diagram and generate SQL or Supabase schema.
+
+### 5. Real-time Information
+
+**You:**
+```
+Search for the latest Flutter 3.28 breaking changes and update my code
+```
+
+The AI will search the web and find current information.
+
+## Tips for Best Results
+
+### 1. Be Specific About What You Want
+
+Good:
+```
+Look at this UI: https://example.com/ui.png
+Recreate the navigation bar component with the exact colors and spacing
+```
+
+Vague:
+```
+Make something like this: https://example.com/ui.png
+```
+
+### 2. Combine Multiple Sources
+
+```
+Compare these two implementations:
+- https://example.com/approach-a.png
+- https://example.com/approach-b.png
+
+Which is better for my use case?
+```
+
+### 3. Reference Documentation
+
+```
+Following the guidelines from https://docs.flutter.dev/ui/widgets
+create a custom widget for my product card
+```
+
+### 4. Use Recent Sources
+
+For web search, mention "latest" or "current" to get up-to-date results:
+
+```
+What are the latest Supabase Edge Functions best practices in 2025?
+```
+
+## What the AI Can Analyze
+
+### From Images
+
+- **UI/UX Design**: Layouts, colors, typography, spacing
+- **Diagrams**: Architecture, flows, schemas
+- **Code Screenshots**: Error messages, stack traces, code snippets
+- **Charts/Graphs**: Data visualization patterns
+- **Mockups**: Design specifications
+
+### From Videos
+
+- **Tutorials**: Step-by-step instructions
+- **Demos**: Feature implementations
+- **Presentations**: Technical concepts
+- **Screen Recordings**: Bug reproductions
+
+### From Web Pages
+
+- **Documentation**: API references, guides, tutorials
+- **Articles**: Best practices, comparisons, solutions
+- **Stack Overflow**: Error solutions, code examples
+- **GitHub**: README files, code examples, issues
+- **Blog Posts**: Technical tutorials, announcements
+
+## Privacy & Security
+
+### What Gets Shared
+
+When you include a URL:
+- The AI fetches public content from that URL
+- For images/videos: Visual analysis is performed
+- For web pages: Text content is extracted and analyzed
+
+### What Stays Private
+
+- The AI only accesses **public** URLs you explicitly provide
+- Your local files are never uploaded (unless you explicitly share them)
+- No automatic web searches happen without your request
+
+### Best Practices
+
+Do:
+- Share public documentation and resources
+- Use image hosting services for screenshots
+- Reference public GitHub repositories
+
+Don't:
+- Share URLs containing sensitive information
+- Include authentication tokens in URLs
+- Link to private company resources (unless intentional)
+
+## Limitations
+
+### Images & Videos
+
+- Images & Videos consumes a large amount of tokens
+- Videos are analyzed via URL context, not frame-by-frame
+- Animated content may be analyzed as static frames
+
+### Web Search
+
+- Results reflect current web content (not real-time data feeds)
+- Some paywalled or authentication-required sites may not be accessible
+- Search quality depends on query specificity
+- Web search can increase the token usage, depending on the amount of content fetched
+
+### General
+
+- The AI can't interact with dynamic web content (buttons, forms)
+- Can't access content behind authentication (unless you have MCP servers configured)
+- Some websites may block automated access
+
+## Advanced: Combining Vision with MCP Servers
+
+For enhanced capabilities, you can combine vision/web search with MCP servers:
+
+**Example with Supabase MCP:**
+
+```
+You: Look at this database design: https://example.com/schema.png
+
+     Then query my Supabase database and tell me what changes
+     I need to make to match this design
+```
+
+The AI will:
+1. Analyze the schema image (Vision)
+2. Query your actual database (Supabase MCP)
+3. Compare and generate migration scripts
+
+**Example with GitHub MCP:**
+
+```
+You: Check the latest commit in the repository
+     and compare it with this screenshot of the error: https://i.imgur.com/bug.png
+```
+
+The AI will:
+1. Read the error from the image (Vision)
+2. Fetch recent commits (GitHub MCP)
+3. Identify the likely cause
+
+## Troubleshooting
+
+### Image Not Loading
+
+**Problem**: "I can't access that image"
+
+**Solutions**:
+1. Verify the URL is publicly accessible
+2. Check the image format is supported
+3. Ensure the link is direct (ends in `.png`, `.jpg`, etc.)
+4. Try re-uploading to a different host (Imgur, GitHub, etc.)
+
+### Web Page Not Accessible
+
+**Problem**: "I can't fetch that page"
+
+**Solutions**:
+1. Check if the page requires authentication
+2. Verify the URL is correct and accessible
+3. Some sites block automated access—try sharing the relevant text instead
+4. Check if the page is behind a paywall
+
+### Search Results Not Relevant
+
+**Problem**: Web search returns poor results
+
+**Solutions**:
+1. Be more specific in your query
+2. Include technical terms and version numbers
+3. Mention the year if you need recent information
+4. Try multiple search attempts with refined queries
+
+## Examples
+
+### Example 1: Recreate UI from Screenshot
+
+**You:**
+```
+https://dribbble.com/shots/example-ui
+Create this login screen in Flutter
+```
+
+**AI Response:**
+```dart
+// Analyzes the image and generates:
+class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFF1A1A2E), // Extracted from image
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Logo matching the design...
+            // Input fields with matching styling...
+            // Button with exact colors and shadows...
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+### Example 2: Debug with Error Screenshot
+
+**You:**
+```
+I'm getting this error: https://i.imgur.com/flutter-error.png
+What's the issue?
+```
+
+**AI Response:**
+```
+The error shows a "Null check operator used on a null value" in your
+UserProfile widget at line 45. This happens because:
+
+1. The 'user' object is null when the widget builds
+2. You're using '!' operator which assumes non-null
+
+Fix by adding null safety:
+[Provides corrected code]
+```
+
+### Example 3: Learn from Documentation
+
+**You:**
+```
+Read https://supabase.com/docs/guides/realtime
+and add real-time subscriptions to my chat app
+```
+
+**AI Response:**
+```
+Based on the Supabase Realtime documentation, here's how to implement
+real-time chat:
+
+[Provides implementation using correct Supabase Realtime API]
+```
+
+### Example 4: Compare Approaches
+
+**You:**
+```
+Compare these two state management approaches:
+- https://riverpod.dev/docs/concepts/providers
+- https://docs.flutter.dev/data-and-backend/state-mgmt/simple
+
+Which should I use for my e-commerce app?
+```
+
+**AI Response:**
+```
+After reviewing both approaches:
+
+Riverpod (Provider 2.0):
+- Better for complex apps with many dependencies
+- Excellent testing support
+- Compile-time safety
+- More boilerplate
+
+Provider (Simple):
+- Good for small to medium apps
+- Easier learning curve
+- Less boilerplate
+- Flutter team's recommendation for beginners
+
+For your e-commerce app, I recommend Riverpod because:
+[Detailed reasoning and implementation guide]
+```
+
+## Conclusion
+
+Vision and web search capabilities are built into Teta—no configuration needed. Just paste URLs in your messages and the AI will handle the rest.
+
+**Remember**: No special buttons, no extra steps. Just include the URL and describe what you want to do with it.
+
+## Related Documentation
+
+- [Getting Started](./getting-started.md) - Platform basics
+- [MCP Servers](./mcp-servers.md) - Extend with custom integrations
+- [AI Agents](./ai-agents.md) - Customize AI behavior
+
+---
+
+**Need help? Contact support@teta.so**

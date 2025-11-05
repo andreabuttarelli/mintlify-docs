@@ -17,6 +17,7 @@
             "group": "Get Started",
             "pages": [
               "index",
+              "vision-and-search",
               "github-integration",
               "ai-agents",
               "mcp-servers"
