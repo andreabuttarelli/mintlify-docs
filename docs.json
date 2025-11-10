@@ -17,6 +17,7 @@
             "group": "Get Started",
             "pages": [
               "index",
+              "why-teta",
               "vision-and-search",
               "github-integration",
               "ai-agents",
