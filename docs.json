@@ -27,7 +27,8 @@
           {
             "group": "Billing",
             "pages": [
-              "credits-and-pricing"
+              "credits-and-pricing",
+              "refund-policy"
             ]
           }
         ]
