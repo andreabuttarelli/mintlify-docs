@@ -25,7 +25,7 @@ Personal agents are available only to you across all your projects.
 1. **Main Sidebar** > **Agents**
 2. Click **"New"**
 3. Fill in the agent details:
-   - **Name**: A descriptive name (e.g., "flutter-best-practices")
+   - **Name**: A descriptive name (e.g., "react-best-practices", "flutter-clean-arch")
    - **Description**: What this agent does
    - **Prompt**: Detailed instructions for the AI
 
@@ -205,6 +205,7 @@ Always follow these style rules:
 
 ### 2. Framework-Specific Guidelines
 
+**Flutter:**
 ```markdown
 For Flutter components:
 - Use StatelessWidget unless state is required
@@ -213,14 +214,33 @@ For Flutter components:
 - Avoid using setState; prefer state management solutions
 ```
 
+**React:**
+```markdown
+For React components:
+- Use functional components with hooks
+- Follow component composition patterns
+- Memoize expensive computations with useMemo
+- Use proper dependency arrays in useEffect
+```
+
+**Svelte:**
+```markdown
+For Svelte components:
+- Keep components reactive and simple
+- Use stores for shared state
+- Leverage Svelte's built-in animations
+- Follow single-file component structure
+```
+
 ### 3. Documentation Generation
 
 ```markdown
-For every function, generate comments:
-- Description of purposes
-- Parameter explanations
+For every function/component, generate documentation:
+- Description of purpose
+- Parameter/props explanations
 - Return values
 - Example usage
+- Type definitions (TypeScript/Dart)
 ```
 
 ### 4. Testing Standards
@@ -228,10 +248,11 @@ For every function, generate comments:
 ```markdown
 For each feature, create:
 - Unit tests for business logic
-- Widget tests for UI (Flutter)
+- Component/Widget tests for UI
 - Integration tests for workflows
 - Mock external dependencies
 - Achieve 80%+ code coverage
+- Follow framework-specific testing conventions
 ```
 
 ## Advanced Features

@@ -1,0 +1,353 @@
+---
+title: "📁 Base Path"
+description: "Configure the base path for your project execution and deployment."
+---
+
+## What is Base Path?
+
+The **Base Path** setting allows you to specify a subdirectory within your repository where your application code resides. This is particularly useful for monorepos or projects where the main application is not located at the repository root.
+
+## How It Works
+
+### What Base Path Affects
+
+The Base Path setting influences:
+
+✅ **Flutter app execution** - Where to run `flutter run` or `flutter build`
+✅ **Svelte app execution** - Where to run `npm run dev` or `npm run build`
+✅ **React app execution** - Where to run development and build commands
+✅ **Web deployment** - Where to deploy from when publishing your app
+✅ **Build processes** - Which directory to use for build operations
+
+### What Base Path Does NOT Affect
+
+❌ **Repository cloning** - The entire repository is always cloned
+❌ **Git operations** - Git commands work on the full repository
+❌ **Sandbox environment** - The complete project branch is available in the sandbox
+❌ **File access** - You can still access files outside the base path
+
+## Configuration
+
+### Setting Your Base Path
+
+1. Open your project in Teta
+2. Go to **App Settings** > **App Info**
+3. Find the **Base Path** field
+4. Enter your desired path
+
+### Path Format Rules
+
+**Important**: Follow these formatting rules:
+
+✅ **Correct format**:
+```
+apps/frontend
+packages/mobile
+client
+```
+
+❌ **Incorrect format**:
+```
+/apps/frontend  ❌ Do not start with /
+apps/frontend/  ❌ Do not end with /
+./apps/frontend ❌ Do not use ./
+```
+
+### Empty Base Path
+
+If you leave the Base Path field **empty**:
+- It defaults to the **root of your repository**
+- Commands will execute from the repository root
+- Deployment will use the root directory
+
+## Use Cases
+
+### Monorepo Structure
+
+If your repository has multiple applications:
+
+```
+my-repo/
+├── apps/
+│   ├── mobile/        ← Flutter app
+│   ├── web/           ← React app
+│   └── admin/         ← Svelte app
+├── packages/
+│   └── shared/
+└── README.md
+```
+
+**Base Path examples**:
+- For mobile app: `apps/mobile`
+- For web app: `apps/web`
+- For admin app: `apps/admin`
+
+### Nested Project
+
+If your main app is in a subdirectory:
+
+```
+my-repo/
+├── docs/
+├── scripts/
+├── frontend/          ← Your main app is here
+│   ├── lib/
+│   ├── pubspec.yaml
+│   └── ...
+└── README.md
+```
+
+**Base Path**: `frontend`
+
+### Root Level Project
+
+If your app is at the repository root:
+
+```
+my-repo/
+├── lib/
+├── pubspec.yaml      ← App files at root
+├── package.json
+└── README.md
+```
+
+**Base Path**: Leave empty (or you can explicitly set it to `.`)
+
+## Examples by Framework
+
+### Flutter Projects
+
+**Typical structure**:
+```
+my-repo/
+└── flutter_app/
+    ├── lib/
+    ├── android/
+    ├── ios/
+    └── pubspec.yaml
+```
+
+**Base Path**: `flutter_app`
+
+**Effect**:
+- `flutter run` executes in `flutter_app/`
+- `flutter build` runs in `flutter_app/`
+- Deployment uses `flutter_app/build/web`
+
+### React Projects
+
+**Typical structure**:
+```
+my-repo/
+└── react-app/
+    ├── src/
+    ├── public/
+    └── package.json
+```
+
+**Base Path**: `react-app`
+
+**Effect**:
+- `npm install` runs in `react-app/`
+- `npm run dev` executes in `react-app/`
+- Deployment uses `react-app/build` or `react-app/dist`
+
+### Svelte Projects
+
+**Typical structure**:
+```
+my-repo/
+└── svelte-app/
+    ├── src/
+    ├── static/
+    └── package.json
+```
+
+**Base Path**: `svelte-app`
+
+**Effect**:
+- `npm install` runs in `svelte-app/`
+- `npm run dev` executes in `svelte-app/`
+- Deployment uses `svelte-app/build`
+
+## How Teta Uses Base Path
+
+### During Development
+
+When you start your app preview:
+1. Teta clones the **entire repository**
+2. Teta navigates to the **Base Path directory**
+3. Teta executes framework-specific commands (e.g., `flutter run`, `npm run dev`)
+4. Your app runs from the specified directory
+
+### During Deployment
+
+When you publish your app:
+1. Teta builds your app in the **Base Path directory**
+2. Teta collects build artifacts from the **Base Path** (e.g., `build/web`, `dist/`)
+3. Teta deploys only the built files
+
+### AI Assistance
+
+When working with AI:
+- AI can access **all files** in your repository
+- AI understands your Base Path configuration
+- AI executes commands relative to the Base Path when appropriate
+- You can still ask AI to modify files outside the Base Path
+
+## Troubleshooting
+
+### App Won't Start
+
+**Problem**: Preview shows errors or won't start
+
+**Solutions**:
+1. Verify your Base Path is correct
+2. Check that `pubspec.yaml` or `package.json` exists in the Base Path
+3. Ensure the path format is correct (no leading/trailing slashes)
+4. Try leaving Base Path empty if your app is at the root
+
+### Build Failures
+
+**Problem**: Deployment or build commands fail
+
+**Solutions**:
+1. Confirm the Base Path contains the correct build configuration
+2. Check that all dependencies are properly defined in the Base Path
+3. Verify build output directories exist (e.g., `build/`, `dist/`)
+4. Review build logs for path-related errors
+
+### Wrong Directory
+
+**Problem**: Commands are running in the wrong location
+
+**Solutions**:
+1. Double-check the Base Path setting in **Settings** > **Project Settings**
+2. Ensure the path matches your repository structure exactly
+3. Remember: paths are case-sensitive
+4. Use forward slashes `/` even on Windows
+
+## Best Practices
+
+### 1. Keep It Simple
+
+Use Base Path only when necessary:
+- ✅ Use for monorepos with multiple apps
+- ✅ Use for nested project structures
+- ❌ Don't use if your app is at the root
+- ❌ Avoid overly deep nesting
+
+### 2. Document Your Structure
+
+Add a note in your repository's README:
+```markdown
+## Project Structure
+
+This is a monorepo. The main Flutter app is located in `apps/mobile/`.
+
+Teta Base Path: `apps/mobile`
+```
+
+### 3. Consistent Naming
+
+Use clear, descriptive directory names:
+- ✅ `apps/mobile`, `apps/web`, `packages/ui`
+- ❌ `app1`, `proj`, `x`
+
+### 4. Test After Changing
+
+After updating Base Path:
+1. Save the setting
+2. Restart your preview
+3. Verify the app runs correctly
+4. Test deployment if applicable
+
+## Advanced Configuration
+
+### Multiple Environments
+
+For projects with multiple environments:
+
+```
+my-repo/
+├── apps/
+│   ├── dev/
+│   ├── staging/
+│   └── production/
+```
+
+**Strategy**:
+- Use different Teta projects for each environment
+- Set different Base Paths for each project
+- Link to different branches if needed
+
+### Shared Dependencies
+
+For monorepos with shared code:
+
+```
+my-repo/
+├── apps/
+│   └── mobile/        ← Base Path here
+├── packages/
+│   └── shared/        ← Shared code here
+```
+
+**Note**:
+- Base Path set to `apps/mobile`
+- AI can still access and modify `packages/shared/`
+- Build tools can reference parent directories
+
+## Related Settings
+
+Base Path works alongside other project settings:
+
+- **Branch**: Which branch to clone (entire repo is still cloned)
+- **GitHub Integration**: Repository connection (unaffected by Base Path)
+- **Environment Variables**: Defined for the Base Path context
+- **Build Commands**: Execute relative to the Base Path
+
+## FAQs
+
+### Can I use absolute paths?
+
+No, Base Path must be relative to the repository root.
+
+### Can I change Base Path after deployment?
+
+Yes, but you'll need to redeploy your app for changes to take effect.
+
+### Does Base Path affect Git operations?
+
+No, Git operations (commit, push, pull) always work on the full repository.
+
+### Can I have multiple Base Paths?
+
+Not in a single Teta project. Create separate projects for different apps in your monorepo.
+
+### What if my Base Path doesn't exist?
+
+Teta will show an error. Ensure the path exists in your repository before setting it.
+
+### Does Base Path affect file uploads?
+
+No, file uploads and AI file operations can access the entire repository.
+
+## Getting Help
+
+Need assistance with Base Path configuration?
+
+📧 **Email**: support@teta.so
+💬 **Discord**: [discord.gg/teta](https://discord.gg/teta)
+📖 **Docs**: [docs.teta.so](https://docs.teta.so)
+🐛 **GitHub**: [github.com/teta-so/teta/issues](https://github.com/teta-so/teta/issues)
+
+## Related Documentation
+
+- [Getting Started](./getting-started.md) - Platform basics
+- [GitHub Integration](./github-integration.md) - Connect your repository
+- [Preview Controls](./preview-controls.md) - Running your app
+
+---
+
+**Questions? Contact support@teta.so**

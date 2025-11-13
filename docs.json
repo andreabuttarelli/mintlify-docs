@@ -17,11 +17,28 @@
             "group": "Get Started",
             "pages": [
               "index",
-              "why-teta",
-              "vision-and-search",
+              "why-teta"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "vision-and-search"
+            ]
+          },
+          {
+            "group": "Configuration",
+            "pages": [
               "github-integration",
+              "base-path",
               "ai-agents",
               "mcp-servers"
+            ]
+          },
+          {
+            "group": "Values",
+            "pages": [
+              "privacy-and-values"
             ]
           },
           {
