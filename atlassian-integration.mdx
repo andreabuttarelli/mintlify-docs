@@ -1,0 +1,138 @@
+---
+title: "🧩 Atlassian Integration (Jira & Confluence)"
+description: "Connect Teta to your Atlassian suite to manage Jira tickets and access your Confluence knowledge base."
+---
+
+## What is Atlassian Integration?
+
+The Atlassian integration allows the Teta AI to connect to your Jira and Confluence workspaces. This enables you to:
+
+-  Jira:
+    - 📖 **Read issue descriptions**, comments, and acceptance criteria.
+    - 💡 **Generate code or prototypes** directly from Jira tickets.
+    - 🔄 **Update ticket statuses** and add comments.
+    - ✍️ **Create new tickets** and sub-tasks.
+- Confluence:
+    - 📚 **Read Confluence pages** and documents for context.
+    - 🧠 **Answer questions** based on your team's knowledge base.
+    - 📝 **Generate documentation** based on your code.
+
+This integration embeds Teta into your Atlassian workflows, improving productivity and ensuring your AI assistant has the context it needs.
+
+## Setup Instructions
+
+### Step 1: Create an Atlassian API Token
+
+1.  Log in to your Atlassian account.
+2.  Go to [Atlassian API Tokens](https://id.atlassian.com/manage-profile/security/api-tokens).
+3.  Click **"Create API token"**.
+4.  Give the token a descriptive **Label** (e.g., "Teta AI").
+5.  Copy the generated token. **You will not be able to see it again.**
+
+### Step 2: Add Token to Teta
+
+1.  In your Teta project, go to **Settings** > **MCPs**.
+2.  Click **"Add MCP"**.
+3.  Add a name for the secret, for example `server-atlassian`.
+4.  Add the following JSON configuration. You will need to provide your Atlassian email and the API token you just created.
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-atlassian"],
+  "env": {
+    "ATLASSIAN_USERNAME": "$ATLASSIAN_EMAIL",
+    "ATLASSIAN_API_TOKEN": "$ATLASSIAN_TOKEN",
+    "ATLASSIAN_BASE_URL": "https://<your-domain>.atlassian.net"
+  }
+}
+```
+5. In the Secrets section, add the following secrets:
+    - `ATLASSIAN_EMAIL`: Your Atlassian account email.
+    - `ATLASSIAN_TOKEN`: The API token you generated.
+    - Replace `<your-domain>` with your actual Atlassian domain.
+
+## Configuration Example
+
+**Secret Name**: `server-atlassian`
+
+**Secret Value**:
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-atlassian"],
+  "env": {
+    "ATLASSIAN_USERNAME": "user@example.com",
+    "ATLASSIAN_API_TOKEN": "<YOUR_ATLASSIAN_API_TOKEN>",
+    "ATLASSIAN_BASE_URL": "https://example.atlassian.net"
+  }
+}
+```
+
+## Usage Examples
+
+### Jira
+
+#### Generate a Prototype from a Jira Ticket
+
+```
+You: "Read ticket 'PROJ-456' in Jira and generate a UI for the user profile page."
+```
+
+#### Update a Ticket
+
+```
+You: "Transition ticket 'PROJ-456' to 'In Progress' and add a comment that work has started."
+```
+
+#### Create a New Ticket
+
+```
+You: "Create a bug report in the 'PROJ' project titled 'Button is not working on the login page.'"
+```
+
+### Confluence
+
+#### Summarize a Confluence Page
+
+```
+You: "Summarize the 'Q4 Engineering Roadmap' page in the 'ENG' space in Confluence."
+```
+
+#### Answer a Question
+
+```
+You: "What is our deployment process, according to the 'Deployment Runbook' in Confluence?"
+```
+
+## Security Best Practices
+
+### 1. Use a Service Account
+
+- If possible, create a dedicated service account in Atlassian for Teta.
+- This avoids using a personal account and makes it easier to manage permissions.
+
+### 2. Limit Permissions
+
+- When creating the API token, ensure the associated account has the minimum necessary permissions.
+- For example, if you only need to read from Confluence, use an account that doesn't have write access.
+
+### 3. Protect Your Token
+
+- Treat your Atlassian API Token as a secret.
+- Never commit it directly to your repository.
+- Use Teta's secret management to store it securely.
+
+## Conclusion
+
+The Atlassian integration connects Teta to the heart of your project management and documentation, providing the AI with the context to be a more effective member of your team.
+
+## Related Documentation
+
+- [Integrations](./integrations.md) - Discover other integrations
+- [MCP Servers](./mcp-servers.md) - Learn more about extending Teta with MCPs
+- [AI Agents](./ai-agents.md) - Create custom AI workflows
+
+---
+
+**Need help? Contact support@teta.so**

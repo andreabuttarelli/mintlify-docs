@@ -1,0 +1,124 @@
+---
+title: "📝 Notion Integration"
+description: "Connect Teta to your Notion workspace to use your documents, databases, and notes as context for the AI."
+---
+
+## What is Notion Integration?
+
+The Notion integration allows the AI in Teta to connect to your Notion workspace. This enables you to:
+
+- 📖 **Read Notion pages** and databases for context.
+- 🧠 **Answer questions** based on your internal documentation.
+- 💡 **Generate ideas** and content based on your existing knowledge base.
+- ✍️ **Create new pages** or add content to existing ones (coming soon).
+
+This turns your Notion workspace into a powerful source of truth for the AI, ensuring that its outputs are aligned with your team's knowledge.
+
+## Setup Instructions
+
+### Step 1: Create a Notion Integration
+
+1.  Go to the [Notion My Integrations page](https://www.notion.so/my-integrations) and click **"New integration"**.
+2.  Give your integration a name (e.g., "Teta AI").
+3.  Select the workspace where you want to install the integration.
+4.  For capabilities, select **"Read content"**. Write capabilities are not yet supported.
+5.  Click **"Submit"**.
+
+### Step 2: Get the Integration Token
+
+1.  On the next screen, you'll see your **"Internal Integration Token"**. Copy this token.
+
+### Step 3: Share Your Pages/Databases with the Integration
+
+1.  Go to the Notion page or database you want to share with Teta.
+2.  Click the **"•••"** menu in the top-right corner.
+3.  Click **"Add connections"** (or **"Connections"** > **"Connect to"**).
+4.  Find and select your new integration (e.g., "Teta AI").
+5.  Confirm that you want to grant access.
+
+### Step 4: Add Token to Teta
+
+1.  In your Teta project, go to **Settings** > **MCPs**.
+2.  Click **"Add MCP"**.
+3.  Add a name for the secret, for example `server-notion`.
+4.  Add the following JSON configuration, replacing `<YOUR_NOTION_INTEGRATION_TOKEN>` with the token you copied.
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-notion"],
+  "env": {
+    "NOTION_API_KEY": "$NOTION_TOKEN"
+  }
+}
+```
+5. In the Secrets section, add a new secret named `NOTION_TOKEN` and paste your Internal Integration Token.
+
+## Configuration Example
+
+**Secret Name**: `server-notion`
+
+**Secret Value**:
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-notion"],
+  "env": {
+    "NOTION_API_KEY": "<YOUR_NOTION_INTEGRATION_TOKEN>"
+  }
+}
+```
+
+## Usage Examples
+
+Once the Notion MCP server is configured, you can instruct the AI to use Notion as a source of information.
+
+### Summarize a Document
+
+```
+You: "Summarize the 'Project Phoenix' planning document in Notion."
+```
+
+### Answer a Question Based on a Knowledge Base
+
+```
+You: "According to our engineering principles in Notion, what is our policy on code reviews?"
+```
+
+### Generate Code Based on a Spec
+
+```
+You: "Read the product spec for the new login page in Notion and generate the initial React component."
+```
+
+## Security Best Practices
+
+### 1. Limit Access
+
+- Only share the specific Notion pages and databases that Teta needs to access.
+- Avoid sharing your entire workspace if possible.
+
+### 2. Use Read-Only Tokens
+
+- The current Notion MCP server only supports read access, which is a good security practice.
+- When write support is added, use separate tokens for read-only and write operations if possible.
+
+### 3. Protect Your Token
+
+- Treat your Notion Integration Token as a secret.
+- Never commit it directly to your repository.
+- Use Teta's secret management to store it securely.
+
+## Conclusion
+
+The Notion integration is a powerful way to provide the Teta AI with deep, project-specific context, leading to more accurate and helpful responses.
+
+## Related Documentation
+
+- [Integrations](./integrations.md) - Discover other integrations
+- [MCP Servers](./mcp-servers.md) - Learn more about extending Teta with MCPs
+- [AI Agents](./ai-agents.md) - Create custom AI workflows
+
+---
+
+**Need help? Contact support@teta.so**

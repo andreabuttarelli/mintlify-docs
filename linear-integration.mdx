@@ -1,0 +1,120 @@
+---
+title: "📈 Linear Integration"
+description: "Connect Teta to your Linear workspace to turn issues into prototypes, track progress, and keep your projects in sync."
+---
+
+## What is Linear Integration?
+
+The Linear integration allows the AI in Teta to connect to your Linear workspace. This enables you to:
+
+- 📖 **Read issue descriptions** and comments for context.
+- 💡 **Generate code or prototypes** directly from Linear issues.
+- 🔄 **Update issue statuses** and add comments.
+- ✍️ **Create new issues** from Teta.
+
+This integration streamlines your development workflow, allowing you to move seamlessly from issue tracking to implementation.
+
+## Setup Instructions
+
+### Step 1: Create a Linear Webhook
+
+1.  In Linear, go to **Settings** > **API**.
+2.  Click **"New Webhook"**.
+3.  Give it a **Label** (e.g., "Teta Integration").
+4.  For the **URL**, you will need to provide the URL of your Teta MCP server. This will be provided to you when you set up the MCP server.
+5.  Select the events you want to subscribe to, such as `IssueCreate`, `IssueUpdate`, etc.
+6.  Click **"Create webhook"**.
+
+### Step 2: Get a Personal API Key
+
+1.  In Linear, go to **Settings** > **API**.
+2.  Under **"Personal API keys"**, click **"Create key"**.
+3.  Give it a **Label** (e.g., "Teta AI Key").
+4.  Copy the generated API key.
+
+### Step 3: Add Key to Teta
+
+1.  In your Teta project, go to **Settings** > **MCPs**.
+2.  Click **"Add MCP"**.
+3.  Add a name for the secret, for example `server-linear`.
+4.  Add the following JSON configuration, replacing `<YOUR_LINEAR_API_KEY>` with the key you copied.
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-linear"],
+  "env": {
+    "LINEAR_API_KEY": "$LINEAR_TOKEN"
+  }
+}
+```
+5. In the Secrets section, add a new secret named `LINEAR_TOKEN` and paste your Personal API Key.
+
+## Configuration Example
+
+**Secret Name**: `server-linear`
+
+**Secret Value**:
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-linear"],
+  "env": {
+    "LINEAR_API_KEY": "<YOUR_LINEAR_API_KEY>"
+  }
+}
+```
+
+## Usage Examples
+
+Once the Linear MCP server is configured, you can interact with Linear issues.
+
+### Generate a Prototype from an Issue
+
+```
+You: "Read issue ENG-123 in Linear and create a prototype for the new login page."
+```
+
+### Update an Issue
+
+```
+You: "Mark issue ENG-123 as 'In Progress' and add a comment saying 'Started working on the prototype.'"
+```
+
+### Create a New Issue
+
+```
+You: "Create a new issue in the 'Engineering' team with the title 'Fix button alignment on homepage' and a description 'The primary call-to-action button is misaligned on mobile devices.'"
+```
+
+## Security Best Practices
+
+### 1. Use Specific Keys
+
+- Create a dedicated Personal API Key for Teta.
+- Avoid using your personal account's key if possible; use a bot or service account if your plan allows.
+
+### 2. Limit Scope (if possible)
+
+- While Linear's Personal API Keys have broad access, be mindful of what you automate.
+- Avoid creating automation that could perform destructive actions without review.
+
+### 3. Protect Your Key
+
+- Treat your Linear API Key as a secret.
+- Never commit it directly to your repository.
+- Use Teta's secret management to store it securely.
+
+## Conclusion
+
+The Linear integration bridges the gap between project management and development, allowing you to turn plans into action more efficiently.
+
+## Related Documentation
+
+- [Integrations](./integrations.md) - Discover other integrations
+- [MCP Servers](./mcp-servers.md) - Learn more about extending Teta with MCPs
+- [AI Agents](./ai-agents.md) - Create custom AI workflows
+
+---
+
+**Need help? Contact support@teta.so**
