@@ -1,0 +1,138 @@
+---
+title: "💬 Slack Integration"
+description: "Connect Teta to your Slack workspace to send notifications, messages, and interact with your team."
+---
+
+## What is Slack Integration?
+
+The Slack integration allows the AI in Teta to connect to your Slack workspace. This enables a variety of automated tasks, such as:
+
+- 📢 Sending notifications about build statuses
+- 💬 Posting messages to channels or users
+- 📈 Reporting metrics or logs
+- 🤖 Creating simple interactive bots
+
+This helps keep your team updated and integrates Teta into your existing communication workflows.
+
+## Built-in Slack MCP Server
+
+Teta provides a built-in MCP server for Slack that makes it easy to get started.
+
+**Capabilities**:
+- Send messages to public and private channels
+- Send direct messages to users
+- Upload files and snippets
+- Use Block Kit for rich message formatting
+
+**Setup**: To enable the Slack MCP server, you'll need to provide a Slack Bot Token.
+
+## Setup Instructions
+
+### Step 1: Create a Slack App
+
+1. Go to the [Slack API website](https://api.slack.com/apps) and click **"Create New App"**.
+2. Choose **"From scratch"**.
+3. Give your app a name (e.g., "Teta Notifier") and select your workspace.
+4. Click **"Create App"**.
+
+### Step 2: Configure Permissions
+
+1. In your app's settings, go to **"OAuth & Permissions"**.
+2. Scroll down to the **"Scopes"** section.
+3. Under **"Bot Token Scopes"**, add the following scopes:
+   - `chat:write`: To send messages
+   - `files:write`: To upload files
+   - `users:read.email`: To find users by email (optional)
+
+### Step 3: Install the App and Get Token
+
+1. At the top of the **"OAuth & Permissions"** page, click **"Install to Workspace"**.
+2. Authorize the app.
+3. After installation, you'll see a **"Bot User OAuth Token"**. Copy this token. It will start with `xoxb-`.
+
+### Step 4: Add Token to Teta
+
+1. In your Teta project, go to **Settings** > **MCPs**.
+2. Click **"Add MCP"**.
+3. Add a name for the secret, for example `server-slack`.
+4. Add the following JSON configuration, replacing `<YOUR_SLACK_BOT_TOKEN>` with the token you copied.
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-slack"],
+  "env": {
+    "SLACK_BOT_TOKEN": "$SLACK_TOKEN"
+  }
+}
+```
+5. In the Secrets section, add a new secret named `SLACK_TOKEN` and paste your Bot User OAuth Token.
+
+## Configuration Example
+
+**Secret Name**: `server-slack`
+
+**Secret Value**:
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-slack"],
+  "env": {
+    "SLACK_BOT_TOKEN": "<YOUR_SLACK_BOT_TOKEN>"
+  }
+}
+```
+
+## Usage Examples
+
+Once the Slack MCP server is configured, you can instruct the AI to send messages.
+
+### Send a Simple Message
+
+```
+You: "Send a message to the #general channel saying 'Hello, world!'"
+```
+
+### Notify on Build Completion
+
+```
+You: "After the build is complete, send a message to #devops saying 'Build successful!'"
+```
+
+### Send a Direct Message
+
+```
+You: "Send a DM to user@example.com with the message 'Your report is ready.'"
+```
+
+## Security Best Practices
+
+### 1. Use Dedicated Tokens
+
+- Create a dedicated Slack App for Teta.
+- Don't reuse tokens from other applications.
+
+### 2. Limit Scopes
+
+- Only grant the permissions that are absolutely necessary. For sending messages, `chat:write` is usually sufficient.
+- Avoid granting broad permissions like `admin` or `chat:write.public`.
+
+### 3. Protect Your Token
+
+- Treat your Slack Bot Token as a secret.
+- Never commit it directly to your repository.
+- Use Teta's secret management to store it securely.
+
+## Conclusion
+
+The Slack integration provides a simple yet powerful way to connect Teta to your team's communication hub, enabling automated notifications and a more interactive development experience.
+
+## Related Documentation
+
+- [MCP Servers](./mcp-servers.md) - Learn more about extending Teta with MCPs
+- [AI Agents](./ai-agents.md) - Create custom AI workflows
+- [GitHub Integration](./github-integration.md) - Manage your code with version control
+
+---
+
+**Need help? Contact support@teta.so**
