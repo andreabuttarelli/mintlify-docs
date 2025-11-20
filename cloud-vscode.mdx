@@ -1,0 +1,225 @@
+---
+title: '💻 Cloud VS Code Environment'
+description: 'Full IDE control directly in your browser with extensions and collaboration'
+---
+
+## What is Cloud VS Code?
+
+Teta provides a **complete VS Code environment** running in the cloud, accessible directly from your browser. This isn't a simplified editor—it's the full Visual Studio Code experience with support for extensions, terminal access, and all the tools you're used to working with.
+
+## Why Cloud VS Code?
+
+While AI can handle many coding tasks, sometimes you need **precise control** over your code. Cloud VS Code gives you the best of both worlds:
+
+- **AI-Powered Development**: Let the AI handle repetitive tasks and boilerplate code
+- **Manual Control**: Jump into the IDE when you need to fine-tune implementation details
+- **Seamless Integration**: Switch between AI assistance and manual editing without friction
+- **Collaboration**: Work together with your team in real-time on the same codebase
+
+## Key Features
+
+### 🔧 Full IDE Capabilities
+
+- **Complete VS Code**: Not a stripped-down version—it's the real thing
+- **Syntax Highlighting**: Full language support for Flutter, React, Svelte, and more
+- **IntelliSense**: Auto-completion, parameter info, and quick info
+- **Code Navigation**: Go to definition, find references, peek definition
+- **Integrated Debugging**: Set breakpoints and debug your applications
+- **Source Control**: Built-in Git integration for commits, branches, and more
+
+### 🧩 Extensions Support
+
+Install and use your favorite VS Code extensions:
+
+- **Language Extensions**: Dart, Flutter, ESLint, Prettier, Svelte
+- **Theme Extensions**: Customize your coding environment
+- **Productivity Tools**: GitLens, Error Lens, Code Spell Checker
+- **Framework-Specific**: Flutter Widget Snippets, React snippets, and more
+
+> **Note**: Most VS Code extensions work seamlessly in the cloud environment. Some extensions that require local file system access may have limited functionality.
+
+### 🖥️ Terminal Access
+
+Full terminal access for running commands:
+
+```bash
+# Install dependencies
+npm install
+flutter pub get
+
+# Run tests
+npm test
+flutter test
+
+# Build your application
+npm run build
+flutter build web
+
+# Run custom scripts
+./scripts/deploy.sh
+```
+
+### 👥 Real-Time Collaboration
+
+Work together with your team:
+
+- **Live Cursors**: See where your teammates are editing
+- **Shared Terminal**: Run commands collaboratively
+- **Instant Updates**: Changes sync in real-time across all users
+- **Multiple Users**: Multiple team members can work in the same workspace
+
+### 🔄 Seamless Integration with AI
+
+The cloud VS Code environment integrates perfectly with Teta's AI features:
+
+- **AI Suggestions**: See AI-generated code changes in real-time
+- **Review & Edit**: Review AI changes and make manual adjustments
+- **Collaborative Workflow**: AI makes changes, you review and refine
+- **Version Control**: All changes (AI and manual) are tracked in Git
+
+## How to Access Cloud VS Code
+
+### 1. Open from Project Dashboard
+
+1. Navigate to your project in Teta
+2. Click on the **"Open VS Code"** button in the navbar
+3. The cloud IDE opens in a new browser tab
+
+### 2. Quick Access
+
+- **Keyboard Shortcut**: Press `Cmd/Ctrl + E` from anywhere in the project
+- **Context Menu**: Right-click on any file and select "Open in VS Code"
+
+## Common Workflows
+
+### Reviewing AI Changes
+
+When the AI makes changes to your code:
+
+1. **Preview Changes**: See the diff in the AI chat
+2. **Open in VS Code**: Click "Open in VS Code" to review in detail
+3. **Make Adjustments**: Fine-tune the implementation
+4. **Commit**: Commit your changes with a meaningful message
+
+### Manual Coding Session
+
+When you need to write code manually:
+
+1. **Open VS Code**: Access the full IDE
+2. **Write Code**: Use all your favorite shortcuts and extensions
+3. **Test**: Run your code and see live preview
+4. **Ask AI for Help**: Switch back to AI chat for assistance when needed
+
+### Team Collaboration
+
+Working with teammates:
+
+1. **Share Workspace**: Invite team members to the project
+2. **Open VS Code Together**: Multiple users can access the same environment
+3. **Edit Simultaneously**: Work on different files or collaborate on the same file
+4. **Communicate**: Use the integrated chat or external tools
+
+### Working with Extensions
+
+To install and manage extensions:
+
+1. **Open Extensions Panel**: Click the Extensions icon in the sidebar
+2. **Search**: Find the extension you need
+3. **Install**: Click "Install" and wait for installation
+4. **Configure**: Set up extension settings as needed
+5. **Use**: Extensions work just like in desktop VS Code
+
+## Tips & Best Practices
+
+### Extension Management
+
+- **Install Workspace Extensions**: Install extensions at the workspace level for team sharing
+- **Keep It Light**: Only install extensions you actively use to maintain performance
+- **Team Standards**: Coordinate with your team on essential extensions
+
+### Performance Optimization
+
+- **Close Unused Tabs**: Keep your editor clean for better performance
+- **Use Search**: Use `Cmd/Ctrl + P` to quickly find and open files
+- **Workspace Trust**: Trust the workspace for full extension functionality
+
+### Keyboard Shortcuts
+
+Familiar VS Code shortcuts work in the cloud:
+
+- `Cmd/Ctrl + P`: Quick file search
+- `Cmd/Ctrl + Shift + P`: Command palette
+- `Cmd/Ctrl + B`: Toggle sidebar
+- `Cmd/Ctrl + J`: Toggle terminal
+- `Cmd/Ctrl + \`: Split editor
+
+### Integration with Teta Features
+
+- **AI Chat**: Keep the AI chat panel open while coding for quick assistance
+- **Live Preview**: Use split view to see code and preview side-by-side
+- **GitHub Sync**: Changes sync automatically to your GitHub repository
+
+## Frequently Asked Questions
+
+**Can I use all my favorite VS Code extensions?**
+
+Most extensions work perfectly. Extensions that require deep local file system access or specific OS features may have limitations.
+
+**How does collaboration work?**
+
+Multiple users can access the same workspace simultaneously. You'll see live cursors and changes update in real-time.
+
+**Are my files saved automatically?**
+
+Yes. Files auto-save, and changes are committed to your Git branch. You can also manually save with `Cmd/Ctrl + S`.
+
+**Can I customize themes and settings?**
+
+Yes! Install theme extensions and modify settings just like desktop VS Code. Settings are saved to your workspace.
+
+**What about terminal commands?**
+
+The integrated terminal supports most standard commands. You have full access to installed tools (npm, flutter, git, etc.).
+
+**Is it as fast as local VS Code?**
+
+Performance depends on your internet connection. For most tasks, it's comparable to local development. The cloud environment has the advantage of powerful cloud compute resources.
+
+**Can I work offline?**
+
+No. The cloud VS Code requires an internet connection. However, your code is synced to GitHub, so you can always clone and work locally if needed.
+
+**How is this different from GitHub Codespaces?**
+
+While both provide cloud VS Code, Teta integrates AI assistance, live preview, and framework-specific optimizations (Flutter, React, Svelte) all in one platform.
+
+## Limitations
+
+- **Internet Required**: Cloud environment requires stable internet connection
+- **Some Extensions**: Extensions requiring local OS features may not work
+- **Performance**: Subject to network latency (typically minimal)
+- **Storage Limit**: Each workspace has a **16GB storage limit**. Exceeding this limit will cause the virtual machine to break, making it impossible to edit code (both via AI and manually through VS Code). If this occurs, your workspace will be flagged and inspected to prevent abuse. If the overage was unintentional, please contact support@teta.so
+
+## Security & Privacy
+
+- **No Code Storage**: Your code lives in your GitHub repository, not on Teta servers
+- **Temporary Workspaces**: Cloud environments are temporary and isolated
+- **Secure Sandboxes**: Each workspace runs in a secure, isolated container
+- **GitHub-Backed**: All changes are version controlled through GitHub
+
+## Related Features
+
+- **[GitHub Integration](./github-integration.md)**: Learn how code syncs with GitHub
+- **[AI Agents](./ai-agents.md)**: Customize AI behavior while coding
+- **[Live Preview](./preview-controls.md)**: Use preview alongside VS Code
+- **[MCP Servers](./mcp-servers.md)**: Extend functionality with custom tools
+
+## Need Help?
+
+- 💬 Join our [Discord Community](https://discord.gg/teta)
+- 📧 Email support: support@teta.so
+- 🐛 Report issues: [GitHub Issues](https://github.com/teta-so/teta/issues)
+
+---
+
+**Ready to code with full control? Open VS Code in your next Teta project! 🚀**

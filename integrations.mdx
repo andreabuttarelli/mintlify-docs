@@ -1,0 +1,70 @@
+---
+title: "🔌 Integrations"
+description: "Connect Teta to your favorite tools and services using MCP servers to extend the AI's capabilities."
+---
+
+## What are Integrations?
+
+Integrations in Teta are powered by **MCP (Model Context Protocol) servers**. Think of them as plugins that connect the Teta AI to your existing tools and workflows.
+
+By integrating Teta with your services, the AI can:
+- 📖 **Read context** from your documentation, tickets, and design files.
+- ✍️ **Perform actions** like creating tickets, updating statuses, or sending notifications.
+- 🧠 **Become more knowledgeable** about your projects, leading to more accurate and relevant outputs.
+
+This turns Teta from a code generator into a true AI assistant that understands your team's context and workflows.
+
+## Available Integrations
+
+Here are some of the pre-built integrations you can use with Teta:
+
+### Collaboration and Project Management
+
+| Integration | Description |
+| :--- | :--- |
+| Linear | Connect to your Linear workspace to turn issues into prototypes and keep your projects in sync. |
+| Atlassian (Jira & Confluence) | Integrate with Jira to manage tickets and Confluence to access your team's knowledge base. |
+| Notion | Use your Notion workspaces as a source of context for the AI. |
+| Slack | Send notifications, messages, and interact with your team in Slack. |
+
+### Databases and Data Sources
+
+| Integration | Description |
+| :--- | :--- |
+| Supabase | Query your Supabase database and read schema information. |
+| PostgreSQL | Connect to any PostgreSQL database to read data and schemas. |
+
+### Web and Development
+
+| Integration | Description |
+| :--- | :--- |
+| Brave Search | Provide the AI with web search capabilities for real-time information. |
+| Puppeteer | Automate browser tasks, scrape websites, and capture screenshots. |
+
+## How to Add an Integration
+
+Most integrations are added by configuring a corresponding MCP server in your project settings.
+
+1.  **Find the integration** you want to add from the list above.
+2.  **Follow the setup instructions** in the integration's documentation.
+3.  Typically, this involves:
+    *   Generating an API key or token from the third-party service.
+    *   Adding a new MCP server configuration in **Settings > MCPs**.
+    *   Storing any sensitive tokens as Teta secrets.
+
+## Custom Integrations
+
+If you don't see an integration you need, you can build your own. MCP is an open standard, and you can create a custom server for any internal or third-party tool.
+
+- **Learn more about custom MCP servers in the [MCP Servers documentation](./mcp-servers.md).**
+
+## Security
+
+When connecting third-party tools, it's important to follow security best practices:
+- **Use dedicated tokens** with the minimum required permissions.
+- **Never expose secrets** in your code; use Teta's secret management.
+- **Review permissions** regularly and revoke access when no longer needed.
+
+---
+
+**Need help? Contact support@teta.so**
