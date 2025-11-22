@@ -1,0 +1,109 @@
+---
+title: 'Environment Variables'
+description: 'Secure management of environment variables in Ondateta'
+---
+
+## Overview
+
+Environment variables in Ondateta are divided into three categories based on their usage:
+
+- **Debug**: Variables used during development
+- **Production**: Variables used in production
+- **All**: Variables used in both development and production
+
+## Debug Variables
+
+**Debug** variables are injected into your project during development:
+
+### Generic Projects
+
+For standard projects, variables are injected into a `.env` file in the base path chosen for the project.
+
+<Warning>
+If a `.env` file already exists in the project, it **will not be overwritten** to preserve your existing configurations.
+</Warning>
+
+### Flutter Projects
+
+For Flutter projects, variables are also injected via `--dart-define` directly into the application during compilation.
+
+### Debug Variables Security
+
+<Note>
+Debug variables are available **only** inside the disposable virtual machines used for development. These VMs are created and destroyed for each development session, ensuring the isolation of your credentials.
+</Note>
+
+## Production Variables
+
+**Production** variables are keys that are used exclusively when publishing the app or website online.
+
+These variables are injected in the same way as described above, but only during the production deployment process.
+
+## All Variables
+
+**All** variables are used **both during development and in production**, providing a consistent configuration across both environments.
+
+## Best Practices
+
+<Warning>
+### What NOT to Do
+
+- **Don't hardcode secrets in code**: Never include API keys, passwords, or other sensitive data directly in source code
+- **Don't commit the `.env` file**: Always add `.env` to your `.gitignore` to avoid exposing credentials in the repository
+
+```bash .gitignore
+# Environment variables
+.env
+.env.local
+.env.*.local
+```
+</Warning>
+
+<Tip>
+### Recommendations
+
+- Use Ondateta environment variables to manage all credentials
+- Configure separate variables for debug and production
+- Document required variables in a `.env.example` file (without real values)
+- Regularly rotate keys in production
+</Tip>
+
+## Usage Example
+
+### `.env.example` File
+
+```bash
+# API Configuration
+API_KEY=your_api_key_here
+API_SECRET=your_api_secret_here
+DATABASE_URL=your_database_url_here
+
+# Feature Flags
+ENABLE_ANALYTICS=true
+```
+
+### Accessing Variables
+
+```javascript
+// Node.js
+const apiKey = process.env.API_KEY;
+
+// Flutter (with --dart-define)
+const String apiKey = String.fromEnvironment('API_KEY');
+```
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="What happens if I manually modify the local .env file?">
+    Manual changes to the local `.env` file will be preserved. Ondateta does not overwrite existing `.env` files.
+  </Accordion>
+
+  <Accordion title="How does injection work for Flutter projects?">
+    For Flutter, variables are passed also via `--dart-define` during build, allowing you to access them through `String.fromEnvironment()`.
+  </Accordion>
+
+  <Accordion title="Are debug variables secure?">
+    Yes, debug variables are only available in the disposable VMs used for development and are destroyed at the end of the session.
+  </Accordion>
+</AccordionGroup>

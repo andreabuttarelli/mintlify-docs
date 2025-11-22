@@ -33,7 +33,8 @@
               "github-integration",
               "base-path",
               "ai-agents",
-              "mcp-servers"
+              "mcp-servers",
+              "environment-variables"
             ]
           },
           {
